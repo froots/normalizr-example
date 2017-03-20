@@ -29,7 +29,7 @@ function currentStatement(state = null, action) {
 function currentTransaction(state = null, action) {
   switch(action.type) {
     case UPDATE_CURRENT_TRANSACTION:
-      return action.payload;
+      return (state === action.payload) ? null : action.payload;
     default:
       return state;
   }
