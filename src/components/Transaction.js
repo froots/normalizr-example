@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Explanation from '../containers/Explanation.js';
+
 const Transaction = ({ transaction, transactionId, selected, handleToggle }) => {
   return (
     <tbody>
@@ -8,11 +10,20 @@ const Transaction = ({ transaction, transactionId, selected, handleToggle }) => 
         <td>{transaction.name}</td>
         <td>{transaction.amount}</td>
       </tr>
-      {selected && (
+      {selected && transaction.explanations.length === 0 && (
         <tr>
-          <td colSpan="3">I am currently the selected transaction</td>
+          <td colSpan="3">There are no explanations</td>
         </tr>
       )}
+      {selected &&
+        transaction.explanations.length > 0 &&
+        transaction.explanations.map(explanationId => (
+          <Explanation
+            key={`explanation_${explanationId}`}
+            explanationId={explanationId}
+          />
+        ))
+      }
     </tbody>
   );
 };
