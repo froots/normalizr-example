@@ -1,4 +1,4 @@
-import { ADD_ENTITIES } from '../actions';
+import { ADD_ENTITIES } from '../../actions';
 
 export const STATE_KEY = 'transactions';
 

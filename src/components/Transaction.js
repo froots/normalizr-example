@@ -1,10 +1,11 @@
 import React from 'react';
+import './Transaction.css';
 
 import Explanation from '../containers/Explanation.js';
 
 const Transaction = ({ transaction, transactionId, selected, handleToggle }) => {
   return (
-    <tbody>
+    <tbody className="Transaction">
       <tr onClick={() => handleToggle(transactionId)}>
         <td>{transaction.dated_on}</td>
         <td>{transaction.name}</td>
