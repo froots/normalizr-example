@@ -10,10 +10,8 @@ const mapStateToProps = ({ currentStatement, statements }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleLoad: bindActionCreators(getStatement, dispatch)
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  handleLoad: bindActionCreators(getStatement, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Statement);

@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Transaction from '../components/Transaction';
+import { updateCurrentTransaction } from '../actions';
 
-const mapStateToProps = ({ transactions }, { transactionId }) => {
-  console.log('Mapping ', transactions, transactionId);
+const mapStateToProps = ({ transactions, currentTransaction }, { transactionId }) => {
   return {
-    transaction: transactions[transactionId]
+    transaction: transactions[transactionId],
+    selected: currentTransaction === transactionId
   };
 }
 
-export default connect(mapStateToProps)(Transaction);
+const mapDispatchToProps = (dispatch) => ({
+  handleToggle: bindActionCreators(updateCurrentTransaction, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transaction);

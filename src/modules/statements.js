@@ -18,12 +18,9 @@ export default function reducer(state = {}, action) {
 }
 
 export const getStatement = () => (dispatch, getState, { api, schema }) => {
-  console.log('Current state in action:', getState());
   return api.fetchStatement()
     .then((response) => {
-      console.log('Response:', response);
       const { entities, result } = normalize(response, schema.statement);
-      console.log('Normalized:', entities, result);
       dispatch(addEntities(entities));
       dispatch(updateCurrentStatement(result));
       return response;
